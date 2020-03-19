@@ -11,9 +11,13 @@ public class GameManager : MonoBehaviour
     GameObject pausePanel;
     Text m_scoreText;
 
+    FMOD.Studio.EventInstance m_musicEvent;
+    
+
     // Start is called before the first frame update
     void Start()
     {
+        m_musicEvent = GameObject.Find("MusicManager").GetComponent<MusicManager>().getMusicEvent();
         pausePanel = GameObject.Find("PausePanel");
         m_scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
         pausePanel.SetActive(false);
@@ -53,6 +57,7 @@ public class GameManager : MonoBehaviour
     public void AddScore(int _score)
     {
         m_score += _score;
+        m_musicEvent.setParameterByName("Score", m_score);
         m_scoreText.text = "Score: " + m_score.ToString();
     }
 

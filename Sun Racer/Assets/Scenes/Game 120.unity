@@ -729,7 +729,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicPath: event:/120BPM
-  m_BPM: 120
 --- !u!4 &834800606
 Transform:
   m_ObjectHideFlags: 0

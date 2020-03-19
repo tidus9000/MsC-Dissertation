@@ -65,6 +65,11 @@ public class MusicManager : MonoBehaviour
         GUILayout.Box(string.Format("tempo = {0}, Beat = {1}", timelineInfo.tempo, timelineInfo.currentBeat));
     }
 
+    public FMOD.Studio.EventInstance getMusicEvent()
+    {
+        return musicEvent;
+    }
+
     public void pauseMusic()
     {
         if (gm.getPaused())
