@@ -12,6 +12,7 @@ public class SpawnerBPM : MonoBehaviour
     GameManager gm;
     int currentBeat = 0;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +32,7 @@ public class SpawnerBPM : MonoBehaviour
             {
                 currentBeat = m_musicMan.timelineInfo.currentBeat;
                 m_sp.SpawnRandom();
+                gm.m_timeToNextBeat = 60 / m_BPM;
             }
 
             if (m_BPM != m_musicMan.timelineInfo.tempo)
@@ -39,6 +41,8 @@ public class SpawnerBPM : MonoBehaviour
                 adjustPosition();
 
             }
+
+            gm.m_timeToNextBeat -= Time.deltaTime;
             //m_elapsedTime += Time.deltaTime;
             //if (m_elapsedTime >= m_interval)
             //{
@@ -64,5 +68,6 @@ public class SpawnerBPM : MonoBehaviour
         Vector3 newPos = Vector3.zero;
         newPos.z = (playerspeed * (60 / m_BPM)) * 2;
         transform.localPosition = newPos;
+        gm.m_spawnDistance = Vector3.Distance(playerObj.transform.position, transform.position);
     }
 }

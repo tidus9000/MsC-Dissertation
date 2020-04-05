@@ -11,6 +11,20 @@ public class GameManager : MonoBehaviour
     GameObject pausePanel;
     Text m_scoreText;
 
+    //Variables to keep track of
+    public float m_playerSpeed = 0;
+    public float m_bpm = 0;
+    public float m_jumpHeight = 0;
+    public float m_beatsPerBar = 0;
+    public float m_timeToNextBeat = 0;
+    public int m_numberOfPickups = 0;
+    public int m_numberOfHazards = 0;
+    public float m_spawnDistance = 0;
+    public int missedCollectables = 0;
+    public int m_collecatblesPickedUp = 0;
+    public int m_hazardsAvoided = 0;
+
+
     FMOD.Studio.EventInstance m_musicEvent;
     
 
@@ -30,6 +44,20 @@ public class GameManager : MonoBehaviour
         {
             PauseGame();
         }
+
+        if (!getPaused())
+        {
+            ManageJumping();
+        }
+    }
+
+    void OnGUI()
+    {
+        GUILayout.Box(string.Format("Player Speed = {0} \n BPM = {1}\n Time to next beat = {2}\n" +
+            " Number of pickups = {3}\n Number of hazards = {4}\n Spawn Distance = {5}\n" +
+            "Missed collectables = {6}\n Collectables picked up = {7}\n Hazards Avoided = {8}"
+            , m_playerSpeed, m_bpm, m_timeToNextBeat, m_numberOfPickups, m_numberOfHazards, m_spawnDistance
+            , missedCollectables, m_collecatblesPickedUp, m_hazardsAvoided));
     }
 
     public void Gameover()
@@ -59,6 +87,14 @@ public class GameManager : MonoBehaviour
         m_score += _score;
         m_musicEvent.setParameterByName("Score", m_score);
         m_scoreText.text = "Score: " + m_score.ToString();
+    }
+
+    void ManageJumping()
+    {
+        m_musicEvent.setParameterByName("JumpHeight", m_jumpHeight);
+        float sc = 100;
+        m_musicEvent.getParameterByName("JumpHeight", out sc);
+        Debug.Log("Jump Height: " + sc);
     }
 
     public bool getPaused()

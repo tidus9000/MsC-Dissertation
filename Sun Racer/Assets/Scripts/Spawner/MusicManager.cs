@@ -13,6 +13,7 @@ public class MusicManager : MonoBehaviour
         public int currentMusicBar = 0;
         public int currentBeat = 0;
         public float tempo = 0;
+        public float beatsPerBar = 0;
         public FMOD.StringWrapper lastMarker = new FMOD.StringWrapper();
     }
 
@@ -49,7 +50,8 @@ public class MusicManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        gm.m_bpm = timelineInfo.tempo;
+        gm.m_beatsPerBar = timelineInfo.beatsPerBar;
     }
 
     void OnDestroy()
@@ -62,7 +64,7 @@ public class MusicManager : MonoBehaviour
 
     void OnGUI()
     {
-        GUILayout.Box(string.Format("tempo = {0}, Beat = {1}", timelineInfo.tempo, timelineInfo.currentBeat));
+        //GUILayout.Box(string.Format("tempo = {0}, Beat = {1}", timelineInfo.tempo, timelineInfo.currentBeat));
     }
 
     public FMOD.Studio.EventInstance getMusicEvent()
@@ -108,6 +110,7 @@ public class MusicManager : MonoBehaviour
                         timelineInfo.currentBeat = parameter.beat;
                         timelineInfo.tempo = parameter.tempo;
                         timelineInfo.currentMusicBar = parameter.bar;
+                        timelineInfo.beatsPerBar = parameter.timesignatureupper;
                     }
                     break;
                 case FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_MARKER:

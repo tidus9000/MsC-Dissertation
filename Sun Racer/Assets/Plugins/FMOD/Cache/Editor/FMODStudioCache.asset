@@ -1,5 +1,39 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7689260178094157446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/120BPM/Jump Height
+  m_EditorClassIdentifier: 
+  Name: Jump Height
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &-7559006392298968516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/120BPM/JumpHeight
+  m_EditorClassIdentifier: 
+  Name: JumpHeight
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &-7436122654342113822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53,6 +87,41 @@ MonoBehaviour:
   Max: 10
   Default: 0
   Exists: 0
+--- !u!114 &-4501378017315499469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/120BPM/Score
+  m_EditorClassIdentifier: 
+  Name: Score
+  Min: 0
+  Max: 100
+  Default: 0
+  Exists: 0
+--- !u!114 &-4291931459635330180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master Bank.bank
+  m_EditorClassIdentifier: 
+  Path: ../SunRacerFMod/Build/Desktop/Master Bank.bank
+  SubDir: 
+  lastModified: 637216923849723920
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
 --- !u!114 &-3636020095616815525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,7 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../SunRacerFMod/Build/Desktop/Master Bank.strings.bank
   SubDir: 
-  lastModified: 637202274267756998
+  lastModified: 637216929584812087
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -88,7 +157,7 @@ MonoBehaviour:
   Path: event:/Collect
   guid: 429a9e38573ae948ac91d89333eb8ced
   Banks:
-  - {fileID: 2979227428456030673}
+  - {fileID: 6064186619568317390}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -146,7 +215,7 @@ MonoBehaviour:
   Path: event:/200BPM
   guid: 0bc0e18444175644b3050e9869f3b4d0
   Banks:
-  - {fileID: 2979227428456030673}
+  - {fileID: 6064186619568317390}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -171,6 +240,40 @@ MonoBehaviour:
   Max: 10
   Default: 0
   Exists: 0
+--- !u!114 &-476908810952385235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/120BPM/Score
+  m_EditorClassIdentifier: 
+  Name: Score
+  Min: 0
+  Max: 100
+  Default: 0
+  Exists: 0
+--- !u!114 &-191656102995905344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/120BPM/Jump Height
+  m_EditorClassIdentifier: 
+  Name: Jump Height
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,7 +288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -3636020095616815525}
-  - {fileID: 2979227428456030673}
+  - {fileID: 6064186619568317390}
   EditorEvents:
   - {fileID: -1357575989132282040}
   - {fileID: -3277903016914745053}
@@ -195,10 +298,10 @@ MonoBehaviour:
   - {fileID: 742028950632369659}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 2979227428456030673}
+  - {fileID: 6064186619568317390}
   StringsBanks:
   - {fileID: -3636020095616815525}
-  stringsBankWriteTime: 637202274267756998
+  stringsBankWriteTime: 637216929584812087
   cacheVersion: 3
 --- !u!114 &36281333200328400
 MonoBehaviour:
@@ -215,7 +318,7 @@ MonoBehaviour:
   Path: event:/130BPM
   guid: 8ef7715f2dff3c4799a2aa37aa20bf38
   Banks:
-  - {fileID: 2979227428456030673}
+  - {fileID: 6064186619568317390}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -238,7 +341,7 @@ MonoBehaviour:
   Path: event:/Near Miss
   guid: a5eea8bd728fab4ebcd7b210caccbe8f
   Banks:
-  - {fileID: 2979227428456030673}
+  - {fileID: 6064186619568317390}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -280,7 +383,7 @@ MonoBehaviour:
   Min: 0
   Max: 100
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &1533679888032488351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,12 +399,13 @@ MonoBehaviour:
   Path: event:/120BPM
   guid: 7bfb0f5946338c48bd3ee74016709f34
   Banks:
-  - {fileID: 2979227428456030673}
+  - {fileID: 6064186619568317390}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 917885613559849834}
+  - {fileID: 1967140234036233030}
+  - {fileID: -7559006392298968516}
   MinDistance: 0
   MaxDistance: 0
   Length: 23335
@@ -322,6 +426,23 @@ MonoBehaviour:
   Max: 10
   Default: 0
   Exists: 0
+--- !u!114 &1967140234036233030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/120BPM/Score
+  m_EditorClassIdentifier: 
+  Name: Score
+  Min: 0
+  Max: 100
+  Default: 0
+  Exists: 1
 --- !u!114 &2411986977943634371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,7 +477,7 @@ MonoBehaviour:
   lastModified: 637202274267687208
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &3230580049534930044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,6 +530,24 @@ MonoBehaviour:
   Max: 10
   Default: 0
   Exists: 0
+--- !u!114 &5856970240955490333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master Bank.bank
+  m_EditorClassIdentifier: 
+  Path: ../SunRacerFMod/Build/Desktop/Master Bank.bank
+  SubDir: 
+  lastModified: 637216921196327094
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
 --- !u!114 &5891852409827176506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,7 +563,7 @@ MonoBehaviour:
   Path: event:/Die
   guid: 965f3c37bb035f4b84ea9998bec18a2e
   Banks:
-  - {fileID: 2979227428456030673}
+  - {fileID: 6064186619568317390}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -432,6 +571,24 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1777
+--- !u!114 &6064186619568317390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master Bank.bank
+  m_EditorClassIdentifier: 
+  Path: ../SunRacerFMod/Build/Desktop/Master Bank.bank
+  SubDir: 
+  lastModified: 637216929584742279
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &7005162684717767947
 MonoBehaviour:
   m_ObjectHideFlags: 0
