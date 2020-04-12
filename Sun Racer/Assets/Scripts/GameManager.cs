@@ -51,14 +51,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void OnGUI()
-    {
-        GUILayout.Box(string.Format("Player Speed = {0} \n BPM = {1}\n Time to next beat = {2}\n" +
-            " Number of pickups = {3}\n Number of hazards = {4}\n Spawn Distance = {5}\n" +
-            "Missed collectables = {6}\n Collectables picked up = {7}\n Hazards Avoided = {8}"
-            , m_playerSpeed, m_bpm, m_timeToNextBeat, m_numberOfPickups, m_numberOfHazards, m_spawnDistance
-            , missedCollectables, m_collecatblesPickedUp, m_hazardsAvoided));
-    }
+    //void OnGUI()
+    //{
+    //    GUILayout.Box(string.Format("Player Speed = {0} \n BPM = {1}\n Time to next beat = {2}\n" +
+    //        " Number of pickups = {3}\n Number of hazards = {4}\n Spawn Distance = {5}\n" +
+    //        "Missed collectables = {6}\n Collectables picked up = {7}\n Hazards Avoided = {8}"
+    //        , m_playerSpeed, m_bpm, m_timeToNextBeat, m_numberOfPickups, m_numberOfHazards, m_spawnDistance
+    //        , missedCollectables, m_collecatblesPickedUp, m_hazardsAvoided));
+    //}
 
     public void Gameover()
     {
@@ -94,7 +94,6 @@ public class GameManager : MonoBehaviour
         m_musicEvent.setParameterByName("JumpHeight", m_jumpHeight);
         float sc = 100;
         m_musicEvent.getParameterByName("JumpHeight", out sc);
-        Debug.Log("Jump Height: " + sc);
     }
 
     public bool getPaused()

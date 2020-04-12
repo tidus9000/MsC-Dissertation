@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.01.10.00">
     <object class="AudioFile" id="{1c4f76d0-81b3-4b03-82af-af0d6b1707b3}">
         <property name="assetPath">
-            <value>435414__v-ktor__explosion11.wav</value>
+            <value>SFX/435414__v-ktor__explosion11.wav</value>
         </property>
         <property name="frequencyInKHz">
             <value>44.0999985</value>

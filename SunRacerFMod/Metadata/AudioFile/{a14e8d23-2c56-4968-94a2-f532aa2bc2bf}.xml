@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.01.10.00">
     <object class="AudioFile" id="{a14e8d23-2c56-4968-94a2-f532aa2bc2bf}">
         <property name="assetPath">
-            <value>486234__bennettfilmteacher__whooshforwhipzoom.wav</value>
+            <value>SFX/486234__bennettfilmteacher__whooshforwhipzoom.wav</value>
         </property>
         <property name="frequencyInKHz">
             <value>48</value>

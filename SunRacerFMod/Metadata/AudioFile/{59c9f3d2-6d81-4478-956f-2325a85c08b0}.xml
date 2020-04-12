@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.01.10.00">
     <object class="AudioFile" id="{59c9f3d2-6d81-4478-956f-2325a85c08b0}">
         <property name="assetPath">
-            <value>411749__natty23__bell-ding.wav</value>
+            <value>SFX/411749__natty23__bell-ding.wav</value>
         </property>
         <property name="frequencyInKHz">
             <value>44.0999985</value>

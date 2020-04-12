@@ -7,7 +7,10 @@ public class Shipmovement : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] float m_maxTurnSpeed;
+    [SerializeField] float m_openworldTurnTilt;
     [SerializeField] float m_maxTurnTilt;
+
+    public bool m_openWorld;
 
     GameManager gm;
 
@@ -23,13 +26,24 @@ public class Shipmovement : MonoBehaviour
         gm.m_playerSpeed = speed;
         if (!gm.getPaused())
         {
-            Vector3 pos = transform.position;
+            Vector3 pos = transform.localPosition;
             Vector3 rot = transform.rotation.eulerAngles;
 
             if (Input.GetAxis("Horizontal") != 0)
             {
-                pos.x += ((Input.GetAxis("Horizontal") * m_maxTurnSpeed) * Time.deltaTime);
-                rot.z = ((Input.GetAxis("Horizontal") * m_maxTurnTilt)) * -1;
+                if (m_openWorld)
+                {
+                    rot.y += ((Input.GetAxis("Horizontal") * m_openworldTurnTilt));
+                    //pos.x += ((Input.GetAxis("Horizontal") * m_maxTurnSpeed) * Time.deltaTime);
+                }
+                else
+                {
+                    Vector3 right = transform.right;
+                    right *= ((Input.GetAxis("Horizontal") * m_maxTurnSpeed) * Time.deltaTime);
+                    //pos.x += ((Input.GetAxis("Horizontal") * m_maxTurnSpeed) * Time.deltaTime);
+                    pos += right;
+                    //rot.z = ((Input.GetAxis("Horizontal") * m_maxTurnTilt)) * -1;
+                }
             }
 
 
@@ -37,7 +51,7 @@ public class Shipmovement : MonoBehaviour
             forward *= (speed * Time.deltaTime);
             pos += forward;
 
-            transform.position = pos;
+            transform.localPosition = pos;
             transform.rotation = Quaternion.Euler(rot);
         }
     }
