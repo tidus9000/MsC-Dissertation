@@ -66,10 +66,23 @@ public class MusicManager : MonoBehaviour
         //GUILayout.Box(string.Format("tempo = {0}, Beat = {1}", timelineInfo.tempo, timelineInfo.currentBeat));
     }
 
-    public FMOD.Studio.EventInstance getMusicEvent()
+    public bool getMusicEvent(ref FMOD.Studio.EventInstance _Event)
     {
-        return musicEvent;
+        FMOD.Studio.PLAYBACK_STATE s;
+        musicEvent.getPlaybackState(out s);
+        if (s == FMOD.Studio.PLAYBACK_STATE.PLAYING || s == FMOD.Studio.PLAYBACK_STATE.STARTING)
+        {
+            _Event = musicEvent;
+            return true;
+        }
+
+        return false;
     }
+
+    //public FMOD.Studio.EventInstance getMusicEvent()
+    //{
+    //    return musicEvent;
+    //}
 
     public void pauseMusic()
     {

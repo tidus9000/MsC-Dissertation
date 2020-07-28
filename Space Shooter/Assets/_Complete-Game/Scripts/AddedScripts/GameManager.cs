@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public float m_jumpHeight = 0;
     public float m_beatsPerBar = 0;
     public float m_timeToNextBeat = 0;
+    public float m_timePerBeat = 0;
     public int m_numberOfPickups = 0;
     public int m_numberOfHazards = 0;
     public float m_spawnDistance = 0;
@@ -24,14 +25,18 @@ public class GameManager : MonoBehaviour
     public int m_collecatblesPickedUp = 0;
     public int m_hazardsAvoided = 0;
 
+    float no = 0;
+
+    [Range(0, 0.25f)] public float m_beatZone;
+    public bool m_inTime = false;
 
     FMOD.Studio.EventInstance m_musicEvent;
+    bool m_gotmusicEvent = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        m_musicEvent = GameObject.Find("MusicManager").GetComponent<MusicManager>().getMusicEvent();
         pausePanel = GameObject.Find("PausePanel");
         m_scoreText = GameObject.Find("Score").GetComponent<Text>();
         //pausePanel.SetActive(false);
@@ -40,6 +45,18 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!m_gotmusicEvent)
+        {
+            if (GameObject.Find("MusicManager").GetComponent<MusicManager>().getMusicEvent(ref m_musicEvent))
+            {
+                m_gotmusicEvent = true;
+            }
+            else
+            {
+                Debug.Log("Error getting music event");
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.P))
         {
             PauseGame();
@@ -48,6 +65,27 @@ public class GameManager : MonoBehaviour
         if (!getPaused())
         {
             ManageJumping();
+        }
+
+
+        m_timePerBeat = 60 / m_bpm;
+        //work out if we're in time in ths frame
+        if (m_timeToNextBeat <= m_beatZone || m_timeToNextBeat >= (m_timePerBeat - m_beatZone))
+        {
+            m_inTime = true;
+        }
+        else
+        {
+            m_inTime = false;
+        }
+
+        if (Input.GetMouseButtonDown(0) && m_inTime)
+        {
+            Debug.Log("Shot in time");
+        }
+        else if (Input.GetMouseButtonDown(0) && !m_inTime)
+        {
+            Debug.Log("shot out of time");
         }
     }
 
@@ -85,7 +123,11 @@ public class GameManager : MonoBehaviour
     public void AddScore(int _score)
     {
         m_score += _score;
+
         m_musicEvent.setParameterByName("Score", m_score);
+        //m_musicEvent.getParameterByName("Score", out no);
+        //Debug.Log("FMOD score: " + no);
+
         m_scoreText.text = "Score: " + m_score.ToString();
     }
 

@@ -10,6 +10,7 @@ public class BeatManager : MonoBehaviour
     Spawner m_sp;
     int currentBeat = 0;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,18 +23,21 @@ public class BeatManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (currentBeat != m_musicMan.timelineInfo.currentBeat)
         {
             currentBeat = m_musicMan.timelineInfo.currentBeat;
             //spawn a beat marker
             m_sp.Spawn();
-            gm.m_timeToNextBeat = 60 / m_BPM;
+            gm.m_timeToNextBeat = gm.m_timePerBeat;
         }
 
         if (m_BPM != m_musicMan.timelineInfo.tempo)
         {
             m_BPM = m_musicMan.timelineInfo.tempo;
         }
+
+
 
         gm.m_timeToNextBeat -= Time.deltaTime;
     }
