@@ -5,12 +5,13 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float m_health = 20;
+    PlayerLogic m_playerlog;
     [FMODUnity.EventRef] public string hitEvent;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        m_playerlog = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLogic>();
     }
 
     // Update is called once per frame
@@ -18,7 +19,7 @@ public class Enemy : MonoBehaviour
     {
         if (m_health <= 0)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 
@@ -29,6 +30,7 @@ public class Enemy : MonoBehaviour
             m_health -= collision.gameObject.GetComponent<Damageblock>().m_damage;
             Debug.Log("Enemy health now: " + m_health);
             FMODUnity.RuntimeManager.PlayOneShot(hitEvent, transform.position);
+            m_playerlog.AddCombo();
         }
     }
 }

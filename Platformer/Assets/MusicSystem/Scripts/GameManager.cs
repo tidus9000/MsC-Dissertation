@@ -87,7 +87,19 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("shot out of time");
         }
+
+        m_musicEvent.setParameterByName("Score", m_score);
+        //m_musicEvent.getParameterByName("Score", out no);
+        //Debug.Log("FMOD score: " + no);
+
+        if (m_scoreText)
+        {
+            m_scoreText.text = "Score: " + m_score.ToString();
+        }
+
     }
+
+
 
     //void OnGUI()
     //{
@@ -128,7 +140,10 @@ public class GameManager : MonoBehaviour
         //m_musicEvent.getParameterByName("Score", out no);
         //Debug.Log("FMOD score: " + no);
 
-        m_scoreText.text = "Score: " + m_score.ToString();
+        if (m_scoreText)
+        {
+            m_scoreText.text = "Score: " + m_score.ToString();
+        }
     }
 
     void ManageJumping()
