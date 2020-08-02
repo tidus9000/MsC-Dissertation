@@ -42,6 +42,11 @@ public class GameManager : MonoBehaviour
         //pausePanel.SetActive(false);
     }
 
+    private void FixedUpdate()
+    {
+        m_timeToNextBeat -= Time.deltaTime;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -67,8 +72,25 @@ public class GameManager : MonoBehaviour
             ManageJumping();
         }
 
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            DataRecorder dr = GetComponent<DataRecorder>();
+            if (dr)
+            {
+                dr.SaveInfo();
+            }
+            else
+            {
+                Debug.Log("No Data recorder attached");
+            }
+        }
 
         m_timePerBeat = 60 / m_bpm;
+
+        if (m_bpm != 0 && m_timeToNextBeat > m_timePerBeat)
+        {
+            m_timeToNextBeat = m_timePerBeat;
+        }
         //work out if we're in time in ths frame
         if (m_timeToNextBeat <= m_beatZone || m_timeToNextBeat >= (m_timePerBeat - m_beatZone))
         {

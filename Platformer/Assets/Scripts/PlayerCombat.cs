@@ -10,6 +10,8 @@ public class PlayerCombat : MonoBehaviour
     GameManager m_gameManager;
     GameObject m_attack;
 
+    DataRecorder dr;
+
     [Range(0,1)] public float m_attackTime;
     float timer;
 
@@ -18,6 +20,7 @@ public class PlayerCombat : MonoBehaviour
     void Start()
     {
         m_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        dr = GameObject.Find("GameManager").GetComponent<DataRecorder>();
     }
 
     // Update is called once per frame
@@ -36,6 +39,15 @@ public class PlayerCombat : MonoBehaviour
         {
             m_attack = GameObject.Instantiate(m_damageblock, m_damagePoint);
             FMODUnity.RuntimeManager.PlayOneShot(m_attackAudioEvent, m_damagePoint.position);
+
+            if (dr)
+            {
+                dr.AddTiming(m_gameManager.m_timeToNextBeat, m_gameManager.m_inTime, m_gameManager.m_score);
+            }
+            else
+            {
+                Debug.Log("No data recorder found when trying to add data");
+            }
 
             if (m_gameManager.m_inTime)
             {
