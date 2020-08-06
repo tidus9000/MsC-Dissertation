@@ -52,7 +52,6 @@ public class PlayerCombat : MonoBehaviour
             if (m_gameManager.m_inTime)
             {
                 m_attack.GetComponent<Damageblock>().m_damage *= m_inTimeMultiplier;
-                Debug.Log("Attacked in time");
                 m_attack.GetComponent<MeshRenderer>().material.SetColor("_Colour", Color.red);
             }
 

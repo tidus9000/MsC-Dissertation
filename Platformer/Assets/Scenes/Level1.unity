@@ -1422,6 +1422,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4920477973907077075, guid: e33c9218e6b16614787585ef4c7348ad,
+        type: 3}
+      propertyPath: m_attackTime
+      value: 2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4920477973907077075, guid: e33c9218e6b16614787585ef4c7348ad,
+        type: 3}
+      propertyPath: m_damageBlock
+      value: 
+      objectReference: {fileID: 7462647511618854233, guid: 6e73ee2d608eab645acc72621e23353b,
+        type: 3}
+    - target: {fileID: 5870217259696865209, guid: e33c9218e6b16614787585ef4c7348ad,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 8596538895383072731, guid: e33c9218e6b16614787585ef4c7348ad,
         type: 3}
       propertyPath: m_LocalPosition.x

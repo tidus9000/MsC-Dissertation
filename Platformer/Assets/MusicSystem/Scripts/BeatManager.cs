@@ -16,6 +16,7 @@ public class BeatManager : MonoBehaviour
     bool m_outofSync = false;
     BeatDataRecorder bdr;
 
+
     // Start is called before the first frame update
     void Start()
     {
