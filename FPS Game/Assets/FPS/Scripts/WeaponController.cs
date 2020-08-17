@@ -118,8 +118,14 @@ public class WeaponController : MonoBehaviour
 
     const string k_AnimAttackParameter = "Attack";
 
+    //Added parameters
+    GameManager m_gm;
+    bool m_shooting = false;
+
     void Awake()
     {
+        m_gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         m_CurrentAmmo = maxAmmo;
         m_LastMuzzlePosition = weaponMuzzle.position;
 
@@ -141,6 +147,8 @@ public class WeaponController : MonoBehaviour
         UpdateAmmo();
         UpdateCharge();
         UpdateContinuousShootSound();
+
+        delayBetweenShots = m_gm.m_timePerBeat / 2;
 
         if (Time.deltaTime > 0)
         {
@@ -256,14 +264,30 @@ public class WeaponController : MonoBehaviour
         switch (shootType)
         {
             case WeaponShootType.Manual:
-                if (inputDown)
+                if (inputDown && m_gm.m_inTime)
                 {
                     return TryShoot();
                 }
                 return false;
 
             case WeaponShootType.Automatic:
-                if (inputHeld)
+                //if input is down in time, start shooting
+                if (owner.name == "Player")
+                {
+                    if (inputDown && m_gm.m_inTime)
+                    {
+                        m_shooting = true;
+                    }
+                    if (inputHeld && m_shooting)
+                    {
+                        return TryShoot();
+                    }
+                    if (inputUp)
+                    {
+                        m_shooting = false;
+                    }
+                }
+                else if (inputHeld)
                 {
                     return TryShoot();
                 }
@@ -288,13 +312,27 @@ public class WeaponController : MonoBehaviour
 
     bool TryShoot()
     {
-        if (m_CurrentAmmo >= 1f 
-            && m_LastTimeShot + delayBetweenShots < Time.time)
+        if (owner.name == "Player")
         {
-            HandleShoot();
-            m_CurrentAmmo -= 1f;
+            if (m_CurrentAmmo >= 1f
+                            && m_LastTimeShot + delayBetweenShots < Time.time)
+            {
+                HandleShoot();
+                m_CurrentAmmo -= 1f;
 
-            return true;
+                return true;
+            }
+        }
+        else if (m_gm.m_inExactTime)
+        {
+            if (m_CurrentAmmo >= 1f
+                && m_LastTimeShot + delayBetweenShots < Time.time)
+            {
+                HandleShoot();
+                m_CurrentAmmo -= 1f;
+
+                return true;
+            }
         }
 
         return false;
@@ -302,6 +340,7 @@ public class WeaponController : MonoBehaviour
 
     bool TryBeginCharge()
     {
+        
         if (!isCharging
             && m_CurrentAmmo >= ammoUsedOnStartCharge
             && Mathf.FloorToInt((m_CurrentAmmo - ammoUsedOnStartCharge) * bulletsPerShot) > 0
