@@ -122,4 +122,16 @@ public class Enemy : BeatActions
     {
         Debug.Log("Can attack now");
     }
+
+    public void Stunned()
+    {
+        Debug.Log("I have been stunned");
+        FMODUnity.RuntimeManager.PlayOneShot(hitEvent, transform.position);
+        if (m_attackObject)
+        {
+            Destroy(m_attackObject.gameObject);
+        }
+        m_attacking = false;
+        m_cantAttackTime = m_gameManager.m_timePerBeat * m_gameManager.m_beatsPerBar;
+    }
 }

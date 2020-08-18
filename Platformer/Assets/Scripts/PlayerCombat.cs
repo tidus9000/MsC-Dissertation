@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour
 {
     [SerializeField] GameObject m_damageblock;
+    [SerializeField] GameObject m_blockBlock;
     [SerializeField] Transform m_damagePoint;
     [SerializeField] int m_inTimeMultiplier = 3;
     GameManager m_gameManager;
@@ -53,6 +54,27 @@ public class PlayerCombat : MonoBehaviour
             {
                 m_attack.GetComponent<Damageblock>().m_damage *= m_inTimeMultiplier;
                 m_attack.GetComponent<MeshRenderer>().material.SetColor("_Colour", Color.red);
+            }
+
+            timer = m_attackTime;
+        }
+
+        if (Input.GetAxis("Fire2") != 0 && m_attack == null)
+        {
+
+            if (dr)
+            {
+                dr.AddTiming(m_gameManager.m_timeToNextBeat, m_gameManager.m_inTime, m_gameManager.m_score);
+            }
+            else
+            {
+                Debug.Log("No data recorder found when trying to add data");
+            }
+
+            if (m_gameManager.m_inTime)
+            {
+                m_attack = GameObject.Instantiate(m_blockBlock, m_damagePoint);
+                FMODUnity.RuntimeManager.PlayOneShot(m_attackAudioEvent, m_damagePoint.position);
             }
 
             timer = m_attackTime;

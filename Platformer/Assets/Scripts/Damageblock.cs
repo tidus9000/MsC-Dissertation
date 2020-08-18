@@ -17,4 +17,16 @@ public class Damageblock : MonoBehaviour
     {
         
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("BlockBlock"))
+        {
+            Destroy(collision.gameObject);
+            if (transform.parent.transform.parent.gameObject.GetComponent<Enemy>())
+            {
+                transform.parent.transform.parent.gameObject.GetComponent<Enemy>().Stunned();
+            }
+        }
+    }
 }
