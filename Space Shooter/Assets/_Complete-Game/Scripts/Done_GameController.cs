@@ -20,8 +20,14 @@ public class Done_GameController : MonoBehaviour
     private bool restart;
     private int score;
 
+    //added parameters
+    DataRecorder m_dr;
+    BetweenSceneData m_bsd;
+
     void Start()
     {
+        m_dr = GameObject.Find("DataRecorder").GetComponent<DataRecorder>();
+        m_bsd = GameObject.Find("BetweenSceneData").GetComponent<BetweenSceneData>();
         gameOver = false;
         restart = false;
         restartText.text = "";
@@ -59,6 +65,10 @@ public class Done_GameController : MonoBehaviour
 
             if (gameOver)
             {
+                m_dr.SaveInfo();
+                m_bsd.m_fileName = m_dr.m_saveName;
+                m_bsd.m_sessionID = m_dr.recordedData.sessionID;
+                GetComponent<LoadSceneButton>().LoadTargetScene();
                 restartText.text = "Press 'R' for Restart";
                 restart = true;
                 break;

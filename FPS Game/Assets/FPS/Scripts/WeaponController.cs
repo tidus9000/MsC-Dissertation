@@ -121,10 +121,13 @@ public class WeaponController : MonoBehaviour
     //Added parameters
     GameManager m_gm;
     bool m_shooting = false;
+    DataRecorder m_dr;
 
     void Awake()
     {
+        //set up added parameters
         m_gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        m_dr = GameObject.Find("DataRecorder").GetComponent<DataRecorder>();
 
         m_CurrentAmmo = maxAmmo;
         m_LastMuzzlePosition = weaponMuzzle.position;
@@ -148,6 +151,8 @@ public class WeaponController : MonoBehaviour
         UpdateCharge();
         UpdateContinuousShootSound();
 
+        //make adjustments to the music
+        maxChargeDuration = m_gm.m_timePerBeat * m_gm.m_beatsPerBar;
         delayBetweenShots = m_gm.m_timePerBeat / 2;
 
         if (Time.deltaTime > 0)
@@ -264,7 +269,25 @@ public class WeaponController : MonoBehaviour
         switch (shootType)
         {
             case WeaponShootType.Manual:
-                if (inputDown && m_gm.m_inTime)
+                if (owner.name == "Player")
+                {
+                    //record the data
+                    if (inputDown)
+                    {
+                        m_dr.AddTiming(m_gm.m_playerBeatAccuracy, m_gm.m_inTime, m_gm.m_score);
+                    }
+
+                    if (inputDown && m_gm.m_inTime)
+                    {
+                        return TryShoot();
+                    }
+                    else if (inputDown && !m_gm.m_inTime)
+                    {
+                        //overheat the weapon if we're out of time with the music
+                        UseAmmo(m_CurrentAmmo);
+                    }
+                }
+                else if (inputDown)
                 {
                     return TryShoot();
                 }
@@ -274,9 +297,20 @@ public class WeaponController : MonoBehaviour
                 //if input is down in time, start shooting
                 if (owner.name == "Player")
                 {
+                    //record the data
+                    if (inputDown)
+                    {
+                        m_dr.AddTiming(m_gm.m_playerBeatAccuracy, m_gm.m_inTime, m_gm.m_score);
+                    }
+
                     if (inputDown && m_gm.m_inTime)
                     {
                         m_shooting = true;
+                    }
+                    else if (inputDown && !m_gm.m_inTime)
+                    {
+                        //overheat the weapon if we're out of time with the music
+                        UseAmmo(m_CurrentAmmo);
                     }
                     if (inputHeld && m_shooting)
                     {
@@ -294,9 +328,46 @@ public class WeaponController : MonoBehaviour
                 return false;
 
             case WeaponShootType.Charge:
-                if (inputHeld)
+                if (owner.name == "Player")
+                {
+                    //record the data
+                    if (inputDown || inputUp)
+                    {
+                        m_dr.AddTiming(m_gm.m_playerBeatAccuracy, m_gm.m_inTime, m_gm.m_score);
+                    }
+
+                    if (inputDown && m_gm.m_inTime)
+                    {
+                        m_shooting = true;
+                    }
+                    else if (inputDown && !m_gm.m_inTime)
+                    {
+                        //overheat the weapon if we're out of time with the music
+                        UseAmmo(m_CurrentAmmo);
+                    }
+                    if (inputHeld && m_shooting)
+                    {
+                        TryBeginCharge();
+                    }
+                }
+                else if (inputHeld)
                 {
                     TryBeginCharge();
+                }
+
+                if (owner.name == "Player")
+                {
+                    if (inputUp && m_gm.m_inTime)
+                    {
+                        return TryReleaseCharge();
+                    }
+                    else if (inputUp && !m_gm.m_inTime)
+                    {
+                        UseAmmo(m_CurrentAmmo);
+                    }else if (automaticReleaseOnCharged && currentCharge >= 1f)
+                    {
+                        return TryReleaseCharge();
+                    }
                 }
                 // Check if we released charge or if the weapon shoot autmatically when it's fully charged
                 if (inputUp || (automaticReleaseOnCharged && currentCharge >= 1f))
@@ -309,7 +380,7 @@ public class WeaponController : MonoBehaviour
                 return false;
         }
     }
-
+    
     bool TryShoot()
     {
         if (owner.name == "Player")

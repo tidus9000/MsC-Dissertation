@@ -21,9 +21,15 @@ public class Health : MonoBehaviour
 
     bool m_IsDead;
 
+    //added parameters
+    public int m_score;
+    public bool m_isEnemy;
+    GameManager m_gm;
+
     private void Start()
     {
         currentHealth = maxHealth;
+        m_gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     public void Heal(float healAmount)
@@ -83,6 +89,10 @@ public class Health : MonoBehaviour
             if (onDie != null)
             {
                 m_IsDead = true;
+                if (m_isEnemy)
+                {
+                    m_gm.AddScore(m_score);
+                }
                 onDie.Invoke();
             }
         }

@@ -8,12 +8,13 @@ public class BeatMarker : MonoBehaviour
     [SerializeField]Vector2 m_target;
     MusicManager m_music;
 
+    public bool selected = false;
     // Start is called before the first frame update
     void Start()
     {
-        transform.parent = GameObject.Find("Canvas").transform;
+        //transform.parent = GameObject.Find("Canvas").transform;
 
-        //transform.SetParent(GameObject.Find("Canvas").transform, false);
+        //transform.SetParent(GameObject.Find("Canvas").transform, true);
 
         //when beat marker spawns, we want to set its speed so that it goes to the target after one bar
         m_target = GameObject.Find("BeatTargetPoint").transform.position;
@@ -30,11 +31,22 @@ public class BeatMarker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 newpos = Vector2.MoveTowards(transform.position, m_target, m_speed * Time.deltaTime);
+        Vector3 newpos = Vector3.MoveTowards(transform.position, m_target, m_speed * Time.deltaTime);
+
+        if (newpos.x == transform.position.x && newpos.y == transform.position.y)
+        {
+            Destroy(this.gameObject);
+        }
+
+        if (selected)
+        {
+            Debug.Log("Old pos: " + transform.position + " New Pos: " + newpos);
+        }
 
         transform.position = newpos;
 
-        if (transform.position.x == m_target.x && transform.position.y == m_target.y)
+        
+        if (transform.position.x == m_target.x && (transform.position.y <= m_target.y + 0.01 || transform.position.y >= m_target.y - 0.01))
         {
             Destroy(this.gameObject);
         }

@@ -34,8 +34,16 @@ public class GameFlowManager : MonoBehaviour
     float m_TimeLoadEndGameScene;
     string m_SceneToLoad;
 
+    //added parameters
+    DataRecorder m_dr;
+    BetweenSceneData m_bsd;
+
     void Start()
     {
+        //added gameobjects
+        m_dr = GameObject.Find("DataRecorder").GetComponent<DataRecorder>();
+        m_bsd = GameObject.Find("BetweenSceneData").GetComponent<BetweenSceneData>();
+
         m_Player = FindObjectOfType<PlayerCharacterController>();
         DebugUtility.HandleErrorIfNullFindObject<PlayerCharacterController, GameFlowManager>(m_Player, this);
 
@@ -77,6 +85,11 @@ public class GameFlowManager : MonoBehaviour
         // unlocks the cursor before leaving the scene, to be able to click buttons
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        //save the data
+        m_dr.SaveInfo();
+        m_bsd.m_sessionID = m_dr.recordedData.sessionID;
+        m_bsd.m_fileName = m_dr.m_saveName;
 
         // Remember that we need to load the appropriate end scene after a delay
         gameIsEnding = true;

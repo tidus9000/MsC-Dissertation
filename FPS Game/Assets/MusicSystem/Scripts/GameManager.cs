@@ -25,14 +25,14 @@ public class GameManager : MonoBehaviour
     public int m_collecatblesPickedUp = 0;
     public int m_hazardsAvoided = 0;
 
-    float no = 0;
-
     [Range(0, 0.25f)] public float m_beatZone;
     public bool m_inTime = false;
     public bool m_inExactTime = false;
 
     FMOD.Studio.EventInstance m_musicEvent;
     bool m_gotmusicEvent = false;
+
+    public float m_playerBeatAccuracy = 0.0f;
 
 
     // Start is called before the first frame update
@@ -46,6 +46,11 @@ public class GameManager : MonoBehaviour
     private void FixedUpdate()
     {
         m_timeToNextBeat -= Time.deltaTime;
+        m_playerBeatAccuracy -= Time.deltaTime;
+        if (m_playerBeatAccuracy <= 0 - m_beatZone || m_playerBeatAccuracy >= m_timeToNextBeat + m_beatZone)
+        {
+            m_playerBeatAccuracy = m_timeToNextBeat;
+        }
     }
 
     // Update is called once per frame
