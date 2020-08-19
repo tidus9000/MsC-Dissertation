@@ -39,9 +39,11 @@ public class Enemy : BeatActions
     // Update is called once per frame
     void Update()
     {
+        //the attack should be 2 beats
+        m_attackTime = (m_gameManager.m_timePerBeat * 2);
         if (m_health <= 0)
         {
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
 
         if (m_attacking)

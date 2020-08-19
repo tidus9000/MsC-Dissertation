@@ -43,7 +43,7 @@ public class BeatManager : MonoBehaviour
         {
             currentBeat = m_musicMan.timelineInfo.currentBeat;
             //spawn a beat marker
-            m_sp.Spawn();
+            m_sp.Spawn(transform.parent);
             //gm.m_timeToNextBeat = gm.m_timePerBeat;
 
             if (bdr)

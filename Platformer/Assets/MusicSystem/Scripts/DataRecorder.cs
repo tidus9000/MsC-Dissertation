@@ -5,7 +5,7 @@ using System.IO;
 
 public class DataRecorder : MonoBehaviour
 {
-    struct data
+    public struct data
     {
         public string sessionID;
         public List<float> timings;
@@ -13,9 +13,11 @@ public class DataRecorder : MonoBehaviour
         public List<int> score;
     }
 
+    public string m_saveName;
+
     const string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    data recordedData;
+    public data recordedData;
     // Start is called before the first frame update
     void Start()
     {
@@ -60,7 +62,7 @@ public class DataRecorder : MonoBehaviour
 
     public void SaveInfo()
     {
-        string path = Application.streamingAssetsPath + "/data.csv";
+        string path = Application.streamingAssetsPath + "/" + m_saveName + ".csv";
 
         StreamWriter writer = new StreamWriter(path);
 

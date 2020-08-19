@@ -14,7 +14,7 @@ public class BeatMarker : MonoBehaviour
     {
         //transform.parent = GameObject.Find("Canvas").transform;
 
-        transform.SetParent(GameObject.Find("Canvas").transform, true);
+        //transform.SetParent(GameObject.Find("Canvas").transform, true);
 
         //when beat marker spawns, we want to set its speed so that it goes to the target after one bar
         m_target = GameObject.Find("BeatTargetPoint").transform.position;

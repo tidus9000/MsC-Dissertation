@@ -8,6 +8,7 @@ public class PlayerLogic : MonoBehaviour
     public int m_combo = 0;
     float m_comboTime;
     [SerializeField]float m_maxComboTime = 5;
+    public int m_health = 100;
 
     GameManager m_gameManager;
 
@@ -40,6 +41,11 @@ public class PlayerLogic : MonoBehaviour
         Vector2 scale = m_comboBar.transform.localScale;
         scale.x = percentage;
         m_comboBar.localScale = scale;
+
+        if (m_health <= 0)
+        {
+            Kill();
+        }
     }
 
     public void AddCombo()
@@ -48,5 +54,8 @@ public class PlayerLogic : MonoBehaviour
         m_comboTime = m_maxComboTime;
     }
 
-
+    public void Kill()
+    {
+        GameObject.Find("SceneManager").GetComponent<SceneManager>().GameOver(false);
+    }
 }

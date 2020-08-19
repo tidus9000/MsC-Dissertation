@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{b98d4392-a770-4b05-9abc-7ae9fbcb27d8}">
+        <property name="assetPath">
+            <value>Suede_118_G_Synth.wav</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>8.1356009070294792</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{efefc802-b10c-42a0-b0d7-a8bbcecc4b4f}</destination>
+        </relationship>
+    </object>
+</objects>

@@ -64,6 +64,26 @@ public class Spawner : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Spawn the gameobject at the top of the array at the position of the spawner and set the transform parent
+    /// </summary>
+    /// <param name="_t">The transform we want the objects parent to be</param>
+    public void Spawn(Transform _t)
+    {
+        switch (m_type)
+        {
+            case TYPE.CIRCLE:
+                SpawnCircleArea(0, _t);
+                break;
+            case TYPE.SPHERE:
+                SpawnSphereArea(0, _t);
+                break;
+            case TYPE.CUBE:
+                SpawnCubeArea(0, _t);
+                break;
+        }
+    }
+
     //Spawns a specific gameobject from the array
     public void Spawn(int _index)
     {
@@ -117,6 +137,14 @@ public class Spawner : MonoBehaviour {
             Random.Range(transform.position.z - m_cubeDepth / 2, transform.position.z + m_cubeDepth / 2)), transform.rotation);
     }
 
+    void SpawnCubeArea(int _index, Transform t)
+    {
+        Instantiate(m_spawned[_index], new Vector3(Random.Range(transform.position.x - m_cubeWidth / 2, transform.position.x + m_cubeWidth / 2),
+            Random.Range(transform.position.y - m_cubeHeight / 2, transform.position.y + m_cubeHeight / 2),
+            Random.Range(transform.position.z - m_cubeDepth / 2, transform.position.z + m_cubeDepth / 2)), transform.rotation, t);
+
+    }
+
     //spawn from random 3d position in sphere
     void SpawnSphereArea(int _index)
     {
@@ -125,11 +153,25 @@ public class Spawner : MonoBehaviour {
             Random.Range(transform.position.z - m_radius, transform.position.z + m_radius)), transform.rotation);
     }
 
+    void SpawnSphereArea(int _index, Transform t)
+    {
+        Instantiate(m_spawned[_index], new Vector3(Random.Range(transform.position.x - m_radius, transform.position.y + m_radius),
+            Random.Range(transform.position.y - m_radius, transform.position.y + m_radius),
+            Random.Range(transform.position.z - m_radius, transform.position.z + m_radius)), transform.rotation, t);
+    }
+
     //spawn from random position in a circle
     public void SpawnCircleArea(int _index)
     {
         Instantiate(m_spawned[_index], new Vector3(Random.Range(transform.position.x - m_radius, transform.position.x + m_radius),
             transform.position.y,
             Random.Range(transform.position.z - m_radius, transform.position.z + m_radius)), transform.rotation);
+    }
+
+    public void SpawnCircleArea(int _index, Transform t)
+    {
+        Instantiate(m_spawned[_index], new Vector3(Random.Range(transform.position.x - m_radius, transform.position.x + m_radius),
+            transform.position.y,
+            Random.Range(transform.position.z - m_radius, transform.position.z + m_radius)), transform.rotation, t);
     }
 }
