@@ -24,12 +24,14 @@ public class Done_PlayerController : MonoBehaviour
     GameManager m_gameManager;
     RectTransform m_overheatBar;
 
+    DataRecorder m_dr;
 
     [FMODUnity.EventRef] public string shootEvent;
     [FMODUnity.EventRef] public string badshootEvent;
 
     private void Start()
     {
+        m_dr = GameObject.Find("DataRecorder").GetComponent<DataRecorder>();
         m_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         m_overheatBar = GameObject.Find("OverheatBar").GetComponent<RectTransform>();
         Vector2 scale = m_overheatBar.localScale;
@@ -39,7 +41,12 @@ public class Done_PlayerController : MonoBehaviour
 
     void Update ()
 	{
-		if (Input.GetButton("Fire1") && Time.time > nextFire && m_canshoot) 
+        if (Input.GetButtonDown("Fire1"))
+        {
+            m_dr.AddTiming(m_gameManager.m_playerBeatAccuracy, m_gameManager.m_inTime, m_gameManager.m_score);
+        }
+
+        if (Input.GetButton("Fire1") && Time.time > nextFire && m_canshoot) 
 		{
 			nextFire = Time.time + fireRate;
 			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);

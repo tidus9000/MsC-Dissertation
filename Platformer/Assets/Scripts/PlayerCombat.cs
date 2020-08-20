@@ -43,7 +43,7 @@ public class PlayerCombat : MonoBehaviour
 
             if (dr)
             {
-                dr.AddTiming(m_gameManager.m_timeToNextBeat, m_gameManager.m_inTime, m_gameManager.m_score);
+                dr.AddTiming(m_gameManager.m_playerBeatAccuracy, m_gameManager.m_inTime, m_gameManager.m_score);
             }
             else
             {
@@ -64,7 +64,7 @@ public class PlayerCombat : MonoBehaviour
 
             if (dr)
             {
-                dr.AddTiming(m_gameManager.m_timeToNextBeat, m_gameManager.m_inTime, m_gameManager.m_score);
+                dr.AddTiming(m_gameManager.m_playerBeatAccuracy, m_gameManager.m_inTime, m_gameManager.m_score);
             }
             else
             {

@@ -58,6 +58,7 @@ public class DataRecorder : MonoBehaviour
         recordedData.timings.Add(_timing);
         recordedData.inTime.Add(_inTime);
         recordedData.score.Add(_score);
+        Debug.Log("Data added to recorder");
     }
 
     public void SaveInfo()
