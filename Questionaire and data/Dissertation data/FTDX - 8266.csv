@@ -1,0 +1,13 @@
+Timings,In Time,Score,SessionID
+-8.94E-08,,,FTDX - 8266
+-0.02000009,TRUE,0,
+-0.02000009,TRUE,0,
+-0.02000009,TRUE,0,
+-8.94E-08,TRUE,0,
+0.01999991,TRUE,0,
+0.05999991,TRUE,0,
+-8.94E-08,TRUE,1,
+,,,
+,,,
+Average Timing,Accuracy,Highest Score,
+2.86E-03,1,1,

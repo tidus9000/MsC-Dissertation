@@ -1,0 +1,42 @@
+Q14,Q17,Q3,Q5,Q5_6_TEXT,Q18,Q6,Q7,Q9,Q11,Q12,Q13,Average Timing,Accuracy,Highest Score
+Please enter in the session ID displayed on screen for your game,Which prototype did you play?,What parts did you particularly enjoy about the game? - Selected Choice,What parts did you not enjoy or found frustrating? - Selected Choice,What parts did you not enjoy or found frustrating? - Other (Please Specify) - Text,Was there a Rhythm timing element to your game?,"If the game you played had rhythm timing elements to it, do you think they made the game more or less enjoyable?","Overall, On a scale of 1-10 how would you rate the game that you played?",(Optional) What is your year of birth?,What is you Gender Identity?,(Optional)How much experice would you say you have with Video Games?,(Optional)How much experience would you say you have with music?,,,
+BKUQ - 9807,The Platformer/Fighter,"The Sound Effects,The Music,The Rhythm Timing Elements",,,Yes,More enjoyable,8,1996,Male,A great deal -  I play multiple hours every day,A lot - I Understand a lot about music beyond just listening,-0.017037128,0.975,40
+MITB - 3475,The First Person Shooter,"The Art Style,The Music","How the game 'felt' to play,The Rhythm Timeing Elements",,Yes,Less enjoyable,3,1990,Male,A moderate amount - I play a few hours every week,A lot - I Understand a lot about music beyond just listening,0.060755202,0.807017544,20
+NKMM - 2150,The Space Shooter,"The Art Style,How the game 'felt' to play,The Rhythm Timing Elements",The Music,,Yes,More enjoyable,7,1992,Female,A lot - I play multiple hours every week,A moderate amount - I listen to music and play an instument or two but not very well,0.007999906,0.8,3
+YJKT - 1241,The Platformer/Fighter,"The Sound Effects,How the game 'felt' to play,The Rhythm Timing Elements","The Art Style,The Music",,Yes,,6,1992,Female,A moderate amount - I play a few hours every week,A moderate amount - I listen to music and play an instument or two but not very well,0.075861973,0.793103448,20
+KOGS - 7920,The First Person Shooter,"The Art Style,The Sound Effects,The Music,How the game 'felt' to play,The Rhythm Timing Elements",,,Yes,More enjoyable,8,1992,Female,A moderate amount - I play a few hours every week,A moderate amount - I listen to music and play an instument or two but not very well,0.032363389,0.888888889,40
+RMHN - 4929,The Platformer/Fighter,"The Sound Effects,The Music,How the game 'felt' to play,The Rhythm Timing Elements",The Art Style,,Yes,More enjoyable,7,1990,Male,A moderate amount - I play a few hours every week,A lot - I Understand a lot about music beyond just listening,0.096111021,0.666666667,45
+ELFS - 7667,The Space Shooter,The Art Style,"The Sound Effects,The Music,How the game 'felt' to play,The Rhythm Timeing Elements",,Yes,Less enjoyable,4,1990,Male,A moderate amount - I play a few hours every week,A lot - I Understand a lot about music beyond just listening,0.074137838,0.913793103,60
+FTDX - 8266,The Space Shooter,"The Art Style,The Sound Effects,How the game 'felt' to play",The Rhythm Timeing Elements,,Yes,Less enjoyable,4,1996,Male,A lot - I play multiple hours every week,A moderate amount - I listen to music and play an instument or two but not very well,0.002857053,1,1
+UOLJ - 6883,The Space Shooter,"The Art Style,The Sound Effects,The Music,How the game 'felt' to play,The Rhythm Timing Elements",Other (Please Specify),"Overheat on first misfire means there is no room for error, making it much more difficult.",Yes,More enjoyable,8,1996,Male,A great deal -  I play multiple hours every day,A lot - I Understand a lot about music beyond just listening,0.07253722,0.955223881,32
+PATB - 1152,The First Person Shooter,"The Art Style,The Sound Effects,The Music,How the game 'felt' to play",Other (Please Specify),Lots of mechanics makes it difficult to fully enjoy the rhythm timing elements as it made it difficult to focus on.,Yes,Less enjoyable,7,1996,Male,A great deal -  I play multiple hours every day,A lot - I Understand a lot about music beyond just listening,0.087781431,0.752475248,40
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+Chart Data,,,,,,,,,,,,,,
+"If the game you played had rhythm timing elements to it, do you think they made the game more or less enjoyable?",,,,,,,,,,,,,,
+More enjoyable,5,,,,,,,,,,,,,
+Less enjoyable,4,,,,,,,,,,,,,
+Don't Know,1,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+Average Game review Scores,,,,,,,,,,,,,,
+First Person Shooter,6,,,,,,,,,,,,,
+Platformer,7,,,,,,,,,,,,,
+Space Shooter,5.75,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+Average Accuracy by Game,,,,,,,,,,,,,,
+First Person Shooter,0.816127227,,,,,,,,,,,,,
+Platformer,0.811590038,,,,,,,,,,,,,
+Space Shooter,0.917254246,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+Average Timing by game,,,,,,,,,,,,,,
+First Person Shooter,0.060300007,,,,,,,,,,,,,
+Platformer,0.051645289,,,,,,,,,,,,,
+Space Shooter,0.039383004,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+Average Highest Score,,,,,,,,,,,,,,
+First Person Shooter,33.33333333,,,,,,,,,,,,,
+Platformer,35,,,,,,,,,,,,,
+Space Shooter,24,,,,,,,,,,,,,
